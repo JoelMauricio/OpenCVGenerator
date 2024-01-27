@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"net/http"
 )
 
 func main() {
-	fmt.Println("Hello world")
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Welcome to my website: %s\n", r.URL.Path)
+	})
 
-	fmt.Println("Time:", time.Now())
+	http.ListenAndServe(":80", nil)
 }
