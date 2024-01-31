@@ -1,14 +1,32 @@
 package main
 
 import (
-	"fmt"
+	"html/template"
 	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Welcome to my website: %s\n", r.URL.Path)
-	})
+type Todo struct {
+	Title string
+	Done  bool
+}
 
+type TodoPageData struct {
+	PageTitle string
+	Todos     []Todo
+}
+
+func main() {
+	tmpl := template.Must(template.ParseFiles("layout.html"))
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		data := TodoPageData{
+			PageTitle: "My Todo List",
+			Todos: []Todo{
+				{Title: "Task 1", Done: false},
+				{Title: "Task 1", Done: false},
+				{Title: "Task 1", Done: false},
+			},
+		}
+		tmpl.Execute(w, data)
+	})
 	http.ListenAndServe(":80", nil)
 }
