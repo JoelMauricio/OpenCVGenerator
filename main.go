@@ -1,32 +1,21 @@
 package main
 
 import (
-	"html/template"
+	"log/slog"
 	"net/http"
 )
 
-type Todo struct {
-	Title string
-	Done  bool
-}
-
-type TodoPageData struct {
-	PageTitle string
-	Todos     []Todo
+type Theme struct {
+	Value bool
 }
 
 func main() {
-	tmpl := template.Must(template.ParseFiles("layout.html"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		data := TodoPageData{
-			PageTitle: "My Todo List",
-			Todos: []Todo{
-				{Title: "Task 1", Done: false},
-				{Title: "Task 1", Done: false},
-				{Title: "Task 1", Done: false},
-			},
+		err := Body().Render(r.Context(), w)
+		if err != nil {
+			slog.Error("no funciona")
+			return
 		}
-		tmpl.Execute(w, data)
 	})
 	http.ListenAndServe(":80", nil)
 }
