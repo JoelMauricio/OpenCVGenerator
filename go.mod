@@ -1,4 +1,4 @@
-module opencvg
+module github.com/JoelMauricio/OpenCVGenerator 
 
 go 1.21.6
 

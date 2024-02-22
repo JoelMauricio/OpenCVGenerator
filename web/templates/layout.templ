@@ -1,4 +1,4 @@
-package main
+package templates
 
 var lBg = "#FAFBFC"
 var lFg = "#090A0C"
@@ -61,7 +61,7 @@ templ LandingPage() {
                 the time and effort of organizing and writing their CV's.</p>
             <div class="h-[73px] flex flex-row gap-[26px]">
                 <a class="button howTo" href="#howTo">How to use it?</a>
-                <button class="button bg-[#4065C4] text-[#FAFBFC] font-bold hover:bg-[409FFE]">Generate curriculum</button>
+                <a class="button bg-[#4065C4] !text-[#FAFBFC] font-bold !hover:bg-[409FFE]" href="/Editor">Generate curriculum</a>
             </div>
         </div>
     </section> 
@@ -116,6 +116,7 @@ templ Body() {
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             <title>OpenCVGenerator</title>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"></link>
+            <script src="../htmx/htmx.min.js"></script>
             <script src="https://cdn.tailwindcss.com"></script>
             <script src="https://kit.fontawesome.com/83445511a3.js" crossorigin="anonymous"></script>
         </head>

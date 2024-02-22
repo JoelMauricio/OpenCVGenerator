@@ -1,0 +1,33 @@
+package templates
+
+templ Editor() {
+    <section>
+        hola
+    </section>    
+}
+
+templ Layout() {
+     <!DOCTYPE html>
+    <html lang="en" class="h-100">
+        <head>
+            <meta charset="UTF-8"></meta>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+            <title>OpenCVGenerator</title>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"></link>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <script src="https://kit.fontawesome.com/83445511a3.js" crossorigin="anonymous"></script>
+        </head>
+        <body class="grid grid-flow-row text-[#090A0C] bg-[#FAFBFC] min-h-100 xl:mx-[20rem]">
+            @Editor()
+        </body>
+        <style>
+        * {
+            font-family: "Poppins";
+        }
+
+        a, a:visited, a:hover, a:active {
+        color: inherit;
+        }
+    </style>
+    </html>   
+}
