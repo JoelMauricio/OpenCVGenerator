@@ -1,12 +1,165 @@
 package templates
 
-templ Editor() {
-    <section>
-        hola
-    </section>    
+import "github.com/JoelMauricio/OpenCVGenerator/models"
+
+templ textInput(label string, placeholder string, value string) {
+    <div id={label} class="flex flex-col gap-[10px] items-start w-full">
+        <label class="text-md">{label}</label>
+        <input type="text" class="bg-[#E6EDF4] rounded-md w-full min-h-[40px] px-[1em]" placeholder={placeholder} value={value}></input>
+    </div>
 }
 
-templ Layout() {
+templ emailInput(placeholder string, data string) {
+    <div id="Email" class="flex flex-col gap-[10px] items-start w-full">
+        <label class="text-md">Email</label>
+        <input type="email" class="bg-[#E6EDF4] rounded-md w-full min-h-[40px] px-[1em]" placeholder={placeholder}></input>
+    </div>
+}
+
+templ contactsInput(placeholder string, primary string, secondary string) {
+    <div id="Contacts" class="flex flex-col gap-[10px] items-start w-full">
+        <label class="text-md">Contacts</label>
+        <div class="flex flex-row gap-[1em]">
+            <div class="flex flex-col gap-[10px] items-starts w-full">
+                <label class="text-sm">Primary</label>
+                <input type="text" class="bg-[#E6EDF4] rounded-md w-full min-h-[40px] px-[1em]" placeholder={placeholder} value={primary}></input>
+            </div>
+            <div class="flex flex-col gap-[10px] items-starts w-full">
+                <label class="text-sm">Secondary</label>
+                <input type="text" class="bg-[#E6EDF4] rounded-md w-full min-h-[40px] px-[1em]" placeholder={placeholder} value={secondary}></input>
+            </div>
+        </div>
+    </div> 
+}
+
+templ LanguageItem(language models.Language) {
+    <div class="flex rounded-md bg-[#E6EDF4] w-full min-h-[40px] px-[1em] items-center">
+        <p>{language.Name}</p>
+    </div>
+}
+
+templ LanguagelistInput(languages []models.Language) {
+     <div class="flex flex-col gap-[10px] items-start w-full">
+        <label class="text-md">Languages</label>
+        <div class="w-full flex flex-row gap-[1em]">
+                <input type="text" class="bg-[#E6EDF4] rounded-md w-full min-h-[40px] px-[1em]" placeholder="Add your languages"></input>
+                <button id="Languages" class="rounded-md bg-[#409FFE] min-h-[40] px-[1rem] text-white" type="button"> Add </button>
+        </div>
+        <div id="LanguagesContainer" class="flex flex-col gap-[0.5em] w-full h-[100px] overflow-auto"> 
+            for _, language := range languages {
+                @LanguageItem(language)
+            }
+        </div>
+    </div>
+}
+
+templ AbilityItem(ability models.Ability) {
+    <div class="flex rounded-md bg-[#E6EDF4] w-full min-h-[40px] px-[1em] items-center">
+        <p>{ability.Name}</p>
+    </div> 
+}
+
+templ AbilityListInput(abilities []models.Ability) {
+     <div class="flex flex-col gap-[10px] items-start w-full">
+        <label class="text-md">Abilities</label>
+        <div class="w-full flex flex-row gap-[1em]">
+                <input type="text" class="bg-[#E6EDF4] rounded-md w-full min-h-[40px] px-[1em]" placeholder="Add your abilities"></input>
+                <button id="Abilities" class="rounded-md bg-[#409FFE] min-h-[40] px-[1rem] text-white" type="button"> Add </button>
+        </div>
+        <div id="AbilitiesContainer" class="flex flex-col gap-[0.5em] w-full h-[100px] overflow-auto"> 
+            for _, ability := range abilities {
+                @AbilityItem(ability)
+            }
+        </div>
+    </div>    
+}
+
+templ Form(data models.UserData){
+    <div class="bg-[#FAFBFC] col-span-2 rounded-[15px] px-[50px] pt-[30px]">
+        <form class="flex flex-col gap-[20px] items-center h-full">
+            <span class="self-start font-[800] text-3xl mt-[20px]"><span class="text-[#409FFE]">Your</span> Information</span>
+            // names
+            <div class="flex flex-row gap-[1em]">
+                @textInput("Name", "John", data.FirstName)
+                @textInput("Lastname", "Doe", data.LastName)
+            </div>
+            @textInput("Email", "johndoe@email.com", data.Email)
+            @contactsInput("+# (###) ### ####", data.ContactPrimary, data.ContactSecondary)
+            @textInput("Academic Training","Add your academic experience","")
+            @textInput("Professional Experience", "Add your professional experience","")
+            <div class="flex flex-row gap-[20px]">
+                @AbilityListInput(data.Abilities)
+                @LanguagelistInput(data.Languages)
+            </div>
+            <button class="bg-[#4065C4] mt-auto mb-[30px] rounded-[10px] !text-[#FAFBFC] min-h-[50px] w-fit px-[30px] font-bold !hover:bg-[409FFE]">Export curriculum</button>
+
+        </form>
+    </div>
+}
+
+templ fontButton(selectedFont string) {
+    <div class="flex flex-col items-center justify-center px-[15px]">
+        <span class="text-[#4065C4]">{ selectedFont }</span>
+        <span class={"text-[#090A0C] font-[",selectedFont,"]"}>ABC<b>abc</b></span>
+    </div>
+}
+
+templ templateButton(selectedTemplate string) {
+    <div class="flex flex-col items-center justify-center px-[15px]">
+        <span class="text-[#4065C4]">template</span>
+        <span class="text-[#090A0C] font-extrabold">{ selectedTemplate }</span>
+    </div>
+}
+
+templ colorButton(selecterColor string) {
+    <div class="flex flex-row gap-[12px] px-[15px] items-center justify-center">
+        <i class="fa-solid fa-palette fa-2x text-[#666768]"></i>
+        <input type="color" class="w-[70px] h-[50px]" value={selecterColor}></input>
+    </div>
+}
+
+templ photoButton(photo string) {
+    <div class="flex flex-row gap-[15px] px-[15px] items-center justify-center">
+        <i class="fa-solid fa-image fa-2x text-[#666768]"></i>
+        <span class={"rounded-[10px] w-[40%] h-[40%] text-[#4065C4]"}>Upload...</span>
+    </div>
+}
+
+templ separator() {
+    <div class="w-[3px] h-4/5 bg-[#D9D9D9]"></div>   
+}
+
+templ Menu(selectedColor string){
+    <div class="flex flex-row bg-[#FAFBFC] h-[80px] max-h-[80px] rounded-[15px] gap-[10px] items-center justify-center w-fit px-[25px] z-9">
+        @templateButton("Harvard")
+        @separator()
+        @colorButton(selectedColor)
+        @separator()
+        @fontButton("Poppins")
+        @separator()
+        @photoButton("")
+    </div>
+}
+
+templ View(data models.UserData){
+    <section class="flex bg-[#CDDCEB] col-span-3 items-center justify-center">
+        <h1 class="font-extrabold text-5xl">Open<span class="text-[#409FFE]">CVG</span>enerator</h1>        
+        // add loaded template
+
+        <div class="absolute self-end mb-[30px]">
+            @Menu("#409FFE")
+        </div>
+    </section>
+}
+
+templ Editor(data models.UserData) {
+    <section class="grid grid-flow-col grid-cols-5 auto-cols-max gap-[48px] h-full w-full">
+        @Form(data)
+        @View(data)
+    </section> 
+}
+
+templ Layout(data models.UserData) {
      <!DOCTYPE html>
     <html lang="en" class="h-100">
         <head>
@@ -17,9 +170,15 @@ templ Layout() {
             <script src="https://cdn.tailwindcss.com"></script>
             <script src="https://kit.fontawesome.com/83445511a3.js" crossorigin="anonymous"></script>
         </head>
-        <body class="grid grid-flow-row text-[#090A0C] bg-[#FAFBFC] min-h-100 xl:mx-[20rem]">
-            @Editor()
+        <body class="text-[#090A0C] h-screen bg-[#E6EDF4] px-[25px] py-[35px] mx-[20px]">
+            @Editor(data)
         </body>
+        <script>
+            document.getElementById("Abilities").addEventListener("click",function() {
+                var target = document.getElementById("AbilitiesContainer")
+                target.appendChild(@listInputItem("Hola"))
+            })
+        </script>
         <style>
         * {
             font-family: "Poppins";
@@ -28,6 +187,6 @@ templ Layout() {
         a, a:visited, a:hover, a:active {
         color: inherit;
         }
-    </style>
+        </style>
     </html>   
 }

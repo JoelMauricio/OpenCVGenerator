@@ -33,14 +33,14 @@ func h2(title string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h2 class=\"text-[#090A0C] font-extrabold text-[26px]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h2 class=\"text-[#090A0C] font-extrabold text-[1.6rem]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/layout.templ`, Line: 13, Col: 64}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/layout.templ`, Line: 13, Col: 66}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
@@ -70,14 +70,14 @@ func h3(title string) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"text-[24px] font-extrabold text-[#409FFE]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"text-[1.6rem] font-extrabold text-[#409FFE]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/layout.templ`, Line: 17, Col: 67}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/layout.templ`, Line: 17, Col: 69}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -152,14 +152,14 @@ func InfoCard(title string, content string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[16px] font-normal content-justify\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[1.1rem] font-normal content-justify\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(content)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/layout.templ`, Line: 27, Col: 68}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/layout.templ`, Line: 27, Col: 70}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -189,7 +189,7 @@ func PlanCard(title string, content string, icon string) templ.Component {
 			templ_7745c5c3_Var9 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-row items-center gap-[2rem]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col md:flex-row items-center gap-[2rem]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -214,7 +214,7 @@ func PlanCard(title string, content string, icon string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[16px] font-normal\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p class=\"text-[1.11rem] font-normal\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -251,14 +251,14 @@ func ListItem(content string) templ.Component {
 			templ_7745c5c3_Var12 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"mb-[47px] font-normal text-[20px] marker:text-[#409FFE]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li class=\"mb-[47px] font-normal text-[1.4rem] marker:text-[#409FFE]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(content)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/layout.templ`, Line: 44, Col: 81}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/layout.templ`, Line: 44, Col: 83}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
@@ -288,7 +288,7 @@ func LandingPage() templ.Component {
 			templ_7745c5c3_Var14 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"flex flex-row justify-between items-center pt-[40px] px-[2rem]\"><h1 class=\"font-extrabold text-5xl\">Open<span class=\"text-[#409FFE]\">CVG</span>enerator</h1><button id=\"themeButton\"><i class=\"fa-brands fa-github fa-2xl color-[#94B5D6]\"></i></button></section><section class=\"mt-[134px] flex flex-row justify-between items-center px-[2rem] gap-[48px]\"><p class=\"text-[#409FFE] text-[50px] font-bold min-w-[575px]\">No account,<br>No payment, <br>Just your newly <br>generated curriculum</p><div class=\"flex flex-col text-justify gap-[35px] items-center\"><p class=\"text-[22px]\">OpenCVGenerator is a solution for all those  people who need to make or update their curriculums,  but simply cannot find a free option that saves them  the time and effort of organizing and writing their CV's.</p><div class=\"h-[73px] flex flex-row gap-[26px]\"><a class=\"button howTo\" href=\"#howTo\">How to use it?</a> <a class=\"button bg-[#4065C4] !text-[#FAFBFC] font-bold !hover:bg-[409FFE]\" href=\"/Editor\">Generate curriculum</a></div></div></section><section class=\"mt-[194px] px-[2rem]\"><h2 class=\"text-[#090A0C] font-extrabold text-[26px]\">Why use Open<span class=\"text-[#409FFE]\">CVG</span>enerator</h2><div class=\"mt-[23px] grid grid-flow-col gap-[40px]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"flex flex-row justify-between items-center pt-[40px] px-[2rem]\"><h1 class=\"font-extrabold text-[3rem]\">Open<span class=\"text-[#409FFE]\">CVG</span>enerator</h1><button id=\"themeButton\"><i class=\"fa-brands fa-github fa-2xl color-[#94B5D6]\"></i></button></section><section class=\"flex flex-col md:flex-row justify-between items-start md:items-center px-[2rem] gap-[1rem]\"><div class=\"text-[#409FFE] text-[3.2rem] font-bold min-w-fit\"><p>No account,</p><p>No payment,</p><p>Just your newly</p><p>generated curriculum</p></div><div class=\"flex flex-col text-justify gap-[35px] items-center\"><p class=\"text-[1.8rem] md:text-[1.4rem]\">OpenCVGenerator is a solution for all those  people who need to make or update their curriculums,  but simply cannot find a free option that saves them  the time and effort of organizing and writing their CV's.</p><div class=\"md:h-[73px] flex flex-col md:flex-row gap-[26px] w-full text-[2.2rem] md:text-[1.25rem] md:justify-center\"><a class=\"button howTo self-start w-fit min-h-[60px] md:self-center\" href=\"#howTo\">How to use it?</a> <a class=\"button bg-[#4065C4] self-end w-fit min-h-[60px] !text-[#FAFBFC] font-bold !hover:bg-[409FFE] md:self-center\" href=\"/Editor\">Generate curriculum</a></div></div></section><section class=\"px-[2rem]\"><h2 class=\"text-[#090A0C] font-extrabold text-[26px]\">Why use Open<span class=\"text-[#409FFE]\">CVG</span>enerator</h2><div class=\"mt-[23px] grid grid-flow-row md:grid-flow-col gap-[40px]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -304,7 +304,7 @@ func LandingPage() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section><section class=\"mt-[99px] mx-[2rem]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section><section class=\"mx-[2rem]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -312,7 +312,7 @@ func LandingPage() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"mt-[45px] grid grid-flow-col items-start gap-[10%] px-[56px]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"mt-[45px] grid grid-flow-row md:grid-flow-col items-start gap-[10%] px-[56px]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -324,7 +324,7 @@ func LandingPage() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section><section id=\"howTo\" class=\"grid grid-flow-col gap-[90px] items-start bg-[#DBE6F1] rounded-[20px] mt-[119px] px-[59px] py-[78px] mb-[150px] mx-[2rem]\"><div class=\"max-w-[400px] \">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section><section id=\"howTo\" class=\"grid grid-flow-row md:grid-flow-col gap-[90px] items-start bg-[#DBE6F1] rounded-[20px] px-[59px] py-[78px] mx-[2rem]\"><div class=\"max-w-[400px] \">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -332,7 +332,7 @@ func LandingPage() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<br><span class=\"font-normal text-[18px]\">Learn how to use Open<span class=\"text-[#409FFE]\">CVG</span>enerator in 4 simple steps</span></div><div class=\"max-w-[600px] text-[20px] font-normal h-100 text-left items-start\"><ol class=\"list-decimal\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<br><span class=\"font-normal text-[1.22rem]\">Learn how to use Open<span class=\"text-[#409FFE]\">CVG</span>enerator in 4 simple steps</span></div><div class=\"max-w-[600px] text-[1.4rem] font-normal h-100 text-left items-start\"><ol class=\"list-decimal\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -376,7 +376,7 @@ func Body() templ.Component {
 			templ_7745c5c3_Var15 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\" class=\"h-100\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>OpenCVGenerator</title><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Poppins\"><script src=\"../htmx/htmx.min.js\"></script><script src=\"https://cdn.tailwindcss.com\"></script><script src=\"https://kit.fontawesome.com/83445511a3.js\" crossorigin=\"anonymous\"></script></head><body class=\"grid grid-flow-row text-[#090A0C] bg-[#FAFBFC] min-h-100 xl:mx-[20rem]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\" class=\"scroll-smooth w-screen\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>OpenCVGenerator</title><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Poppins\"><script src=\"../htmx/htmx.min.js\"></script><script src=\"https://cdn.tailwindcss.com\"></script><script src=\"https://kit.fontawesome.com/83445511a3.js\" crossorigin=\"anonymous\"></script></head><body class=\"grid grid-flow-row text-[#090A0C] bg-[#FAFBFC] h-screen md:mx-[20rem] gap-[5rem]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -384,7 +384,7 @@ func Body() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</body><style>\n        /* design system */\n        /* colors */\n        :root {\n            /* darkmode  */\n            --lWhite: #FAFBFC;\n            --lBlack: #090A0C;\n            --lPrimary: #4065C4;\n            --lSecondary: #94B5D6;\n            --lAccent: #409FFE;\n            /* lightmode */\n            --lWhite: #FAFBFC;\n            --lBlack: #090A0C;\n            --lPrimary: #4065C4;\n            --lSecondary: #94B5D6;\n            --lAccent: #409FFE;\n        }\n\n        * {\n            font-family: \"Poppins\";\n        }\n\n        a, a:visited, a:hover, a:active {\n        color: inherit;\n        }\n\n        .intro-actions {\n            height: 73px;\n            display: flex;\n            flex-flow: row;\n            justify-content: center;\n        }\n\n        .button {\n            border-radius: 15px;\n            text-decoration: none;\n            border: none;\n            text-align: center;\n            font-size: 20px;\n            padding: 20px 22px;\n            font-weight: 500;   \n        }\n        \n        .howTo {\n            background-color: rgba(148, 181, 214, 0.30);\n        }\n\n    </style></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</body><style>\n        * {\n            font-family: \"Poppins\";\n        }\n\n        a, a:visited, a:hover, a:active {\n        color: inherit;\n        }\n\n        .intro-actions {\n            height: 73px;\n            display: flex;\n            flex-flow: row;\n            justify-content: center;\n        }\n\n        .button {\n            border-radius: 15px;\n            text-decoration: none;\n            border: none;\n            text-align: center;\n            padding: 20px 22px;\n            font-weight: 500;   \n        }\n        \n        .howTo {\n            background-color: rgba(148, 181, 214, 0.30);\n        }\n\n    </style></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

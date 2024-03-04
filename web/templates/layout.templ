@@ -11,11 +11,11 @@ var dPrimary = "#4065C4"
 var dSecondary = "#409FFE"
 
 templ h2(title string) {
-   <h2 class="text-[#090A0C] font-extrabold text-[26px]">{ title }</h2> 
+   <h2 class="text-[#090A0C] font-extrabold text-[1.6rem]">{ title }</h2> 
 }
 
 templ h3(title string) {
-    <span class="text-[24px] font-extrabold text-[#409FFE]">{ title }</span>
+    <span class="text-[1.6rem] font-extrabold text-[#409FFE]">{ title }</span>
 }
 
 templ h4(title string) {
@@ -25,16 +25,16 @@ templ h4(title string) {
 templ InfoCard(title string, content string) {
     <div class="flex flex-col gap-[5px] bg-[#DBE6F1] xl:min-h-[270px] px-[26px] py-[29px] rounded-[12px]">
         @h3(title)
-        <p class="text-[16px] font-normal content-justify">{ content }</p>
+        <p class="text-[1.1rem] font-normal content-justify">{ content }</p>
     </div> 
 }
 
 templ PlanCard(title string, content string, icon string) {
-    <div class="flex flex-row items-center gap-[2rem]">
+    <div class="flex flex-col md:flex-row items-center gap-[2rem]">
         <i class={"text-[#409FFE] w-[98px]", icon }></i>
         <div>
             @h3(title)
-            <p class="text-[16px] font-normal">
+            <p class="text-[1.11rem] font-normal">
                 { content }<b> Coming soon...</b>
             </p>
         </div>
@@ -42,53 +42,58 @@ templ PlanCard(title string, content string, icon string) {
 }
 
 templ ListItem(content string) {
-    <li class="mb-[47px] font-normal text-[20px] marker:text-[#409FFE]">{ content }</li>
+    <li class="mb-[47px] font-normal text-[1.4rem] marker:text-[#409FFE]">{ content }</li>
 }
 
 templ LandingPage() {
 
     <section class="flex flex-row justify-between items-center pt-[40px] px-[2rem]">
-        <h1 class="font-extrabold text-5xl">Open<span class="text-[#409FFE]">CVG</span>enerator</h1>
+        <h1 class="font-extrabold text-[3rem]">Open<span class="text-[#409FFE]">CVG</span>enerator</h1>
         <button id="themeButton"><i class="fa-brands fa-github fa-2xl color-[#94B5D6]"></i></button>   
     </section>
 
-    <section class="mt-[134px] flex flex-row justify-between items-center px-[2rem] gap-[48px]">
-        <p class="text-[#409FFE] text-[50px] font-bold min-w-[575px]">No account,<br></br> No payment, <br></br> Just your newly <br></br> generated curriculum</p>
+    <section class="flex flex-col md:flex-row justify-between items-start md:items-center px-[2rem] gap-[1rem]">
+        <div class="text-[#409FFE] text-[3.2rem] font-bold min-w-fit">
+            <p>No account,</p>
+            <p>No payment,</p>
+            <p>Just your newly</p>
+            <p>generated curriculum</p>
+        </div>
         <div class="flex flex-col text-justify gap-[35px] items-center">
-            <p class="text-[22px]" >OpenCVGenerator is a solution for all those 
+            <p class="text-[1.8rem] md:text-[1.4rem]" >OpenCVGenerator is a solution for all those 
                 people who need to make or update their curriculums, 
                 but simply cannot find a free option that saves them 
                 the time and effort of organizing and writing their CV's.</p>
-            <div class="h-[73px] flex flex-row gap-[26px]">
-                <a class="button howTo" href="#howTo">How to use it?</a>
-                <a class="button bg-[#4065C4] !text-[#FAFBFC] font-bold !hover:bg-[409FFE]" href="/Editor">Generate curriculum</a>
+            <div class="md:h-[73px] flex flex-col md:flex-row gap-[26px] w-full text-[2.2rem] md:text-[1.25rem] md:justify-center">
+                <a class="button howTo self-start w-fit min-h-[60px] md:self-center" href="#howTo">How to use it?</a>
+                <a class="button bg-[#4065C4] self-end w-fit min-h-[60px] !text-[#FAFBFC] font-bold !hover:bg-[409FFE] md:self-center" href="/Editor">Generate curriculum</a>
             </div>
         </div>
     </section> 
     
-    <section class="mt-[194px] px-[2rem]">
+    <section class="px-[2rem]">
         <h2 class="text-[#090A0C] font-extrabold text-[26px]">Why use Open<span class="text-[#409FFE]">CVG</span>enerator</h2>
-       <div class="mt-[23px] grid grid-flow-col gap-[40px]">
+       <div class="mt-[23px] grid grid-flow-row md:grid-flow-col gap-[40px]">
             @InfoCard("No account needed","There is no need to sign up in order to be able to generate your curriculum. Just go straight into working on your curriculum.")
             @InfoCard("Secure","Because there is no need for an account your data won't be stored anywhere other than your own browser and will be deleted once you export your curriculum")
             @InfoCard("Really free","There are no hidden cost. You will not be asked for a payment in order to download your curriculum. You simply generate your curriculum and export it.")
        </div>   
     </section>
     
-    <section class="mt-[99px] mx-[2rem]">
+    <section class="mx-[2rem]">
         @h2("Future plans")
-       <div class="mt-[45px] grid grid-flow-col items-start gap-[10%] px-[56px]">
+       <div class="mt-[45px] grid grid-flow-row md:grid-flow-col items-start gap-[10%] px-[56px]">
             @PlanCard("Self-hosting","Because there are not registration to use the service it becomes even easier to be able to deploy the app on your own device. ","fa-solid fa-cloud-arrow-down fa-6x mr-[1rem]")
             @PlanCard("Importing curriculum","The whole idea of OpenCVGenerator is that you can create or update your curriculum as fast and simple as possible, therefore the ability to simply import your data to get to editing as fast as possible is something to look for. ","fa-solid fa-file-arrow-up fa-6x") 
        </div> 
     </section>
 
-    <section id="howTo" class="grid grid-flow-col gap-[90px] items-start bg-[#DBE6F1] rounded-[20px] mt-[119px] px-[59px] py-[78px] mb-[150px] mx-[2rem]">
+    <section id="howTo" class="grid grid-flow-row md:grid-flow-col gap-[90px] items-start bg-[#DBE6F1] rounded-[20px] px-[59px] py-[78px] mx-[2rem]">
             <div class="max-w-[400px] ">
                 @h4("How to use it")<br></br>
-                <span class="font-normal text-[18px]">Learn how to use Open<span class="text-[#409FFE]">CVG</span>enerator in 4 simple steps</span>
+                <span class="font-normal text-[1.22rem]">Learn how to use Open<span class="text-[#409FFE]">CVG</span>enerator in 4 simple steps</span>
             </div>
-            <div class="max-w-[600px] text-[20px] font-normal h-100 text-left items-start">
+            <div class="max-w-[600px] text-[1.4rem] font-normal h-100 text-left items-start">
                 <ol class="list-decimal">
                     @ListItem("Select one of the available curriculum templates.")
                     @ListItem("Fill the form with your academic and professional achievements.")
@@ -110,7 +115,7 @@ templ LandingPage() {
 
 templ Body() {
     <!DOCTYPE html>
-    <html lang="en" class="h-100">
+    <html lang="en" class="scroll-smooth w-screen">
         <head>
             <meta charset="UTF-8"></meta>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
@@ -120,27 +125,10 @@ templ Body() {
             <script src="https://cdn.tailwindcss.com"></script>
             <script src="https://kit.fontawesome.com/83445511a3.js" crossorigin="anonymous"></script>
         </head>
-        <body class="grid grid-flow-row text-[#090A0C] bg-[#FAFBFC] min-h-100 xl:mx-[20rem]">
+        <body class="grid grid-flow-row text-[#090A0C] bg-[#FAFBFC] h-screen md:mx-[20rem] gap-[5rem]">
             @LandingPage()
         </body>
         <style>
-        /* design system */
-        /* colors */
-        :root {
-            /* darkmode  */
-            --lWhite: #FAFBFC;
-            --lBlack: #090A0C;
-            --lPrimary: #4065C4;
-            --lSecondary: #94B5D6;
-            --lAccent: #409FFE;
-            /* lightmode */
-            --lWhite: #FAFBFC;
-            --lBlack: #090A0C;
-            --lPrimary: #4065C4;
-            --lSecondary: #94B5D6;
-            --lAccent: #409FFE;
-        }
-
         * {
             font-family: "Poppins";
         }
@@ -161,7 +149,6 @@ templ Body() {
             text-decoration: none;
             border: none;
             text-align: center;
-            font-size: 20px;
             padding: 20px 22px;
             font-weight: 500;   
         }
