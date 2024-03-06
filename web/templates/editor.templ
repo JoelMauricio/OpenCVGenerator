@@ -1,6 +1,45 @@
 package templates
 
-import "github.com/JoelMauricio/OpenCVGenerator/models"
+import  (
+    "github.com/JoelMauricio/OpenCVGenerator/handlers" 
+    "github.com/JoelMauricio/OpenCVGenerator/models"
+)
+
+var shadow = "shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]"
+
+templ ProfessionalInfo(data []models.Professional) {
+    <div id="Professional" class="flex flex-col gap-[10px] items-start w-full">
+        <label class="text-md">Professional Experience</label>
+        <button type="button" class="w-full rounded-[12px] p-[15px] bg-[#E1E7EB]">Add your Professional data</button>   
+        for _, professionalData := range data {
+            @ProfessionalInfoInput(professionalData)        
+        }
+    </div>
+}
+
+templ ProfessionalInfoInput(professional models.Professional) {
+     <div class="flex justify-between rounded-md bg-[#F0F3F5] w-full min-h-[40px] px-[1em] items-center">
+        <span class="text-[0.8rem]"><span class="font-bold text-[1rem]">{professional.PositionName}</span> {professional.BusinessName}</span>    
+        <span>{professional.StartDate}-{professional.EndDate}</span>
+    </div>
+}
+
+templ AcademicInfoInput(academic models.Academic) {
+    <div class="flex justify-between rounded-md bg-[#F0F3F5] w-full min-h-[40px] px-[1em] items-center ">
+        <span class="text-[0.8rem]"><span class="font-bold text-[1rem]">{academic.Career}</span> {academic.Institution}</span>     
+        <span>{academic.StartDate}-{academic.EndDate}</span>
+    </div> 
+}
+
+templ AcademicInfo(data []models.Academic) {
+    <div id="Academics" class="flex flex-col gap-[10px] items-start w-full">
+        <label class="text-md">Academic Experience</label>
+        <button type="button" class={"w-full rounded-[12px] p-[15px] bg-[#E1E7EB] "}>Add your academic data</button>   
+        for _, academicData := range data {
+            @AcademicInfoInput(academicData)        
+        }
+    </div>
+}
 
 templ textInput(label string, placeholder string, value string) {
     <div id={label} class="flex flex-col gap-[10px] items-start w-full">
@@ -33,7 +72,7 @@ templ contactsInput(placeholder string, primary string, secondary string) {
 }
 
 templ LanguageItem(language models.Language) {
-    <div class="flex rounded-md bg-[#E6EDF4] w-full min-h-[40px] px-[1em] items-center">
+    <div class="flex rounded-md bg-[#F0F3F5] w-full min-h-[40px] px-[1em] items-center">
         <p>{language.Name}</p>
     </div>
 }
@@ -54,7 +93,7 @@ templ LanguagelistInput(languages []models.Language) {
 }
 
 templ AbilityItem(ability models.Ability) {
-    <div class="flex rounded-md bg-[#E6EDF4] w-full min-h-[40px] px-[1em] items-center">
+    <div class="flex rounded-md bg-[#F0F3F5] w-full min-h-[40px] px-[1em] items-center">
         <p>{ability.Name}</p>
     </div> 
 }
@@ -75,7 +114,7 @@ templ AbilityListInput(abilities []models.Ability) {
 }
 
 templ Form(data models.UserData){
-    <div class="bg-[#FAFBFC] col-span-2 rounded-[15px] px-[50px] pt-[30px]">
+    <div class={"bg-[#FAFBFC] col-span-2 rounded-[15px] px-[50px] pt-[30px] ",shadow}>
         <form class="flex flex-col gap-[20px] items-center h-full">
             <span class="self-start font-[800] text-3xl mt-[20px]"><span class="text-[#409FFE]">Your</span> Information</span>
             // names
@@ -85,30 +124,66 @@ templ Form(data models.UserData){
             </div>
             @textInput("Email", "johndoe@email.com", data.Email)
             @contactsInput("+# (###) ### ####", data.ContactPrimary, data.ContactSecondary)
-            @textInput("Academic Training","Add your academic experience","")
-            @textInput("Professional Experience", "Add your professional experience","")
+            @AcademicInfo(data.AcademicExperience)
+            @ProfessionalInfo(data.ProfessionalExperience)
             <div class="flex flex-row gap-[20px]">
                 @AbilityListInput(data.Abilities)
                 @LanguagelistInput(data.Languages)
             </div>
             <button class="bg-[#4065C4] mt-auto mb-[30px] rounded-[10px] !text-[#FAFBFC] min-h-[50px] w-fit px-[30px] font-bold !hover:bg-[409FFE]">Export curriculum</button>
+        </form>
+    </div>
+    // <div class="flex flex-col">
+    //     @popupAcademicInput()
+    //     @popupProfesionalInput()
+    // </div>
+}
 
+templ popupProfesionalInput(){
+    <div class={"bg-[#FAFBFC] col-span-2 rounded-[15px] px-[50px] pt-[30px] min-w-[500px] z-[9999]", shadow }>
+        <form class="flex flex-col gap-[20px]">
+            <label class="font-bold text-[1.2rem]"><span class="text-[#409FFE]">Your</span>  Academic Experience </label>
+            @textInput("Career","Career","")
+            @textInput("Institution","Institution","")
+            <div class="flex space-between gap-[10px]">
+                @textInput("Initial Date","Initial date","")
+                @textInput("End date","End date","")
+            </div>
+            @textInput("Description","Add a brief description of the course/certificate (optional)","")
+            <button class="bg-[#4065C4] mt-auto mb-[30px] rounded-[10px] self-end !text-[#FAFBFC] min-h-[50px] w-fit px-[30px] font-bold !hover:bg-[409FFE]">Create</button>
         </form>
     </div>
 }
 
-templ fontButton(selectedFont string) {
-    <div class="flex flex-col items-center justify-center px-[15px]">
-        <span class="text-[#4065C4]">{ selectedFont }</span>
-        <span class={"text-[#090A0C] font-[",selectedFont,"]"}>ABC<b>abc</b></span>
+templ popupAcademicInput(){
+    <div class={"bg-[#FAFBFC] col-span-2 rounded-[15px] px-[50px] pt-[30px] min-w-[500px] z-[9999]", shadow }>
+        <form class="flex flex-col gap-[20px]">
+            <label class="font-bold text-[1.2rem]"><span class="text-[#409FFE]">Your</span>  Professional Experience </label>
+            @textInput("Position name","Add the name of your position","")
+            @textInput("Company name","Add the name of the company","")
+            <div class="flex space-between gap-[10px]">
+                @textInput("Initial Date","Initial date","")
+                @textInput("End date","End date","")
+            </div>
+            @textInput("Description","Add a brief description of the course/certificate (optional)","")
+            <button class="bg-[#4065C4] mt-auto mb-[30px] rounded-[10px] self-end !text-[#FAFBFC] min-h-[50px] w-fit px-[30px] font-bold !hover:bg-[409FFE]">Create</button>
+        </form>
     </div>
 }
 
+
+templ fontButton(selectedFont string) {
+    <button type="button" class="flex flex-col items-center justify-center px-[15px]">
+        <span class="text-[#4065C4]">{ selectedFont }</span>
+        <span class={"text-[#090A0C] font-[",selectedFont,"]"}>ABC<b>abc</b></span>
+    </button>
+}
+
 templ templateButton(selectedTemplate string) {
-    <div class="flex flex-col items-center justify-center px-[15px]">
+    <button type="button" class="flex flex-col items-center justify-center px-[15px]">
         <span class="text-[#4065C4]">template</span>
         <span class="text-[#090A0C] font-extrabold">{ selectedTemplate }</span>
-    </div>
+    </button>
 }
 
 templ colorButton(selecterColor string) {
@@ -120,6 +195,7 @@ templ colorButton(selecterColor string) {
 
 templ photoButton(photo string) {
     <div class="flex flex-row gap-[15px] px-[15px] items-center justify-center">
+        <input type="file" class="hidden"></input>
         <i class="fa-solid fa-image fa-2x text-[#666768]"></i>
         <span class={"rounded-[10px] w-[40%] h-[40%] text-[#4065C4]"}>Upload...</span>
     </div>
@@ -130,7 +206,7 @@ templ separator() {
 }
 
 templ Menu(selectedColor string){
-    <div class="flex flex-row bg-[#FAFBFC] h-[80px] max-h-[80px] rounded-[15px] gap-[10px] items-center justify-center w-fit px-[25px] z-9">
+    <div class={"flex flex-row bg-[#FAFBFC] h-[80px] max-h-[80px] rounded-[15px] gap-[10px] items-center justify-center w-fit px-[25px] z-9 ",shadow}>
         @templateButton("Harvard")
         @separator()
         @colorButton(selectedColor)
@@ -152,14 +228,14 @@ templ View(data models.UserData){
     </section>
 }
 
-templ Editor(data models.UserData) {
+templ Editor() {
     <section class="grid grid-flow-col grid-cols-5 auto-cols-max gap-[48px] h-full w-full">
-        @Form(data)
-        @View(data)
+        @Form(handlers.GetUserContext(handlers.CTX))
+        @View(handlers.GetUserContext(handlers.CTX))
     </section> 
 }
 
-templ Layout(data models.UserData) {
+templ Layout() {
      <!DOCTYPE html>
     <html lang="en" class="h-100">
         <head>
@@ -171,7 +247,7 @@ templ Layout(data models.UserData) {
             <script src="https://kit.fontawesome.com/83445511a3.js" crossorigin="anonymous"></script>
         </head>
         <body class="text-[#090A0C] h-screen bg-[#E6EDF4] px-[25px] py-[35px] mx-[20px]">
-            @Editor(data)
+            @Editor()
         </body>
         <script>
             document.getElementById("Abilities").addEventListener("click",function() {
@@ -187,6 +263,27 @@ templ Layout(data models.UserData) {
         a, a:visited, a:hover, a:active {
         color: inherit;
         }
+
+        /*------ Style 1 ------*/
+        input[type="color"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 75px;
+        height: 65px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        }
+        input[type="color"]::-webkit-color-swatch {
+        border-radius: 12px;
+        border: none;
+        }
+        input[type="color"]::-moz-color-swatch {
+        border-radius: 12px;
+        border: none;
+        }
+
         </style>
     </html>   
 }
